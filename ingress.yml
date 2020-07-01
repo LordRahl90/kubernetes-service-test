@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: example-app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: k8s.quest-tutors.com
+      http:
+        paths:
+          - path: /first
+            backend:
+              serviceName: example-service
+              servicePort: 80
+          - path: /second
+            backend:
+              serviceName: example-service-1
+              servicePort: 80
